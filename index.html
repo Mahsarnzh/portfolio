@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahsa Raeisinezhad — Portfolio</title>
+  <meta name="description" content="Portfolio of Mahsa Raeisinezhad: research, engineering projects, simulations, and notes on AI and mathematics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --bg-soft: #11151a;
+      --text: #e6e9ee;
+      --muted: #adb4c0;
+      --accent: #6daaf7;
+      --card: #0f1318;
+      --border: #1b222b;
+      --code: #0b1220;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f9fc; --bg-soft:#f1f5f9; --text:#0f172a; --muted:#42536b; --accent:#1e66f5; --card:#ffffff; --border:#e5e9f0; --code:#f5f7fb;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 6rem; display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
+    @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .toc { position: static; top: auto; } }
+
+    /* Sidebar / TOC */
+    .toc { position: sticky; top: 1rem; align-self: start; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
+    .toc h2 { margin: 0 0 .5rem; font-size: 1rem; letter-spacing: .02em; font-weight: 700; }
+    .toc nav a { display: block; padding: .25rem 0; color: var(--muted); }
+    .toc nav a:hover { color: var(--text); }
+
+    /* Main */
+    .section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem 1.25rem; margin-bottom: 1rem; }
+    .section h1 { font-size: 1.8rem; margin: .2rem 0 1rem; }
+    .section h2 { font-size: 1.3rem; margin: 1.2rem 0 .5rem; }
+    .section h3 { font-size: 1.05rem; margin: 1rem 0 .35rem; }
+    .muted { color: var(--muted); }
+    .tagbar { display: flex; gap: .6rem; flex-wrap: wrap; margin: .75rem 0 0; }
+    .tag { font-size: .75rem; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); padding: .2rem .5rem; border-radius: 999px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; } }
+
+    .links { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .55rem .85rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--text); text-decoration: none; font-weight: 600; }
+    .btn:hover { filter: brightness(1.05); text-decoration: none; }
+
+    /* Inputs */
+    input, select, button, textarea { background: var(--code); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: .55rem .7rem; font: inherit; }
+    label { display: block; font-weight: 600; margin: .25rem 0 .35rem; }
+    .controls { display: grid; gap: .6rem; grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .controls .wide { grid-column: span 3; }
+    @media (max-width: 700px) { .controls { grid-template-columns: 1fr; } .controls .wide { grid-column: auto; } }
+
+    code, pre { background: var(--code); border: 1px solid var(--border); border-radius: 12px; padding: .25rem .5rem; }
+    pre { padding: .75rem 1rem; overflow: auto; }
+
+    .foot { text-align: center; color: var(--muted); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Table of Contents -->
+    <aside class="toc">
+      <h2>Table of contents</h2>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#billion">Billion seconds</a>
+        <a href="#riddle">Math riddle (simulation)</a>
+        <a href="#conjecture">Math conjecture</a>
+        <a href="#maze">Mice maze game</a>
+        <a href="#exercises">AI exercises</a>
+        <a href="#games">AI projects (2048 / Chess / Minesweeper)</a>
+        <a href="#poetry">Poetry</a>
+        <a href="#beliefs">Beliefs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main>
+      <section id="about" class="section">
+        <header>
+          <h1>Mahsa Raeisinezhad</h1>
+          <p class="muted">“I'm still learning.” — Michelangelo, age 87</p>
+        </header>
+        <div class="links" style="margin:.75rem 0 1rem;">
+          <a class="btn" href="#" target="_blank" rel="noopener">CV</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Scholar</a>
+          <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <p>
+          I am a Mechanical/AI Engineer focused on the intersection of <strong>thermo‑fluid modeling</strong>, <strong>control systems</strong>, and <strong>machine intelligence</strong>.
+          I work on computational models of reasoning, learning, and decision‑making, build digital twins, and contribute to open‑source software.
+        </p>
+        <p>
+          Previously, I developed <strong>thermohydraulic digital twins</strong> in Simulink, designed explainable <strong>RL control algorithms</strong> for
+          complex systems, and led engineering teams to ship production‑grade models and tools.
+        </p>
+        <div class="tagbar">
+          <span class="tag">ANSYS Fluent</span>
+          <span class="tag">MATLAB / Simulink</span>
+          <span class="tag">Python / PyTorch</span>
+          <span class="tag">Control & MPC</span>
+          <span class="tag">CFD & Heat Transfer</span>
+          <span class="tag">Digital Twins</span>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <h2>Selected projects</h2>
+        <article class="card">
+          <h3>Nature project: clementines</h3>
+          <p>
+            In Italy during Christmas we play <em>tombola</em>. In 2014 I asked a simple question: How many segments are in a clementine?
+            With friends we began collecting measurements for fun. By 2017, the spreadsheet had 10,898 samples and a few curious patterns to explore.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Pulse: audio streaming</h3>
+          <p>
+            A tiny platform that makes sharing music personal again. Real‑time visualizations react to audio while friends listen and chat together.
+          </p>
+          <a class="btn" href="#" aria-label="Start streaming">Start streaming</a>
+        </article>
+      </section>
+
+      <section id="billion" class="section">
+        <h2>Billion seconds calculator</h2>
+        <p>When will you be exactly 1,000,000,000 seconds old? Enter your birthdate (and optional time):</p>
+        <div class="controls">
+          <div>
+            <label for="birthdate">Your birthdate</label>
+            <input id="birthdate" type="date" />
+          </div>
+          <div>
+            <label for="birthtime">Time (optional)</label>
+            <input id="birthtime" type="time" />
+          </div>
+          <div style="align-self:end;">
+            <button class="btn" id="calcBtn">Calculate</button>
+          </div>
+          <div class="wide" id="billionOut" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="riddle" class="section">
+        <h2>Math riddle: two bacteria in a bucket</h2>
+        <p>
+          Start with one A and one B bacterium. Each food particle is eaten by a random bacterium in proportion to its share; the eater reproduces.
+          After <em>N</em> drops, what is the distribution of A?
+        </p>
+        <div class="controls">
+          <div>
+            <label for="drops">Food drops (N)</label>
+            <input id="drops" type="number" min="1" value="9" />
+          </div>
+          <div>
+            <label for="trials">Trials</label>
+            <input id="trials" type="number" min="100" step="100" value="1000" />
+          </div>
+          <div style="align-self:end;">
+            <button class="btn" id="runSim">Run simulation</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:1rem;">
+          <canvas id="histChart" height="160"></canvas>
+        </div>
+        <details style="margin-top: .75rem;">
+          <summary><strong>Show solution</strong></summary>
+          <p>
+            This is a classic Pólya urn process. Starting with 1 A and 1 B, after <em>N</em> drops the number of A is
+            uniformly distributed over \(1,2,\dots,N+1\). Equivalently, the fraction of A converges in distribution
+            to \(\mathrm{Beta}(1,1)\), i.e., uniform on \([0,1]\).
+          </p>
+        </details>
+      </section>
+
+      <section id="conjecture" class="section">
+        <h2>Math conjecture: High‑water marks</h2>
+        <p>
+          For a sequence with running maxima, the <em>high‑water marks</em> are the values where the running maximum increases.
+          Over all permutations of \(n\) elements, the distribution of the number of high‑water marks equals the distribution of the
+          number of cycles in a permutation, given by the <em>unsigned Stirling numbers of the first kind</em> \(c(n,k)\).
+        </p>
+        <p>
+          The probability mass function is \(\Pr(K=k) = c(n,k)/n!\), where \(K\) is the number of high‑water marks.
+        </p>
+        <p class="muted">(Sketch: use the bijection between permutations and their cycle structure; it preserves counts with respect to record values.)</p>
+      </section>
+
+      <section id="maze" class="section">
+        <h2>Mice maze game</h2>
+        <p>
+          Inspired by Rosenberg et al. (2021): explore a labyrinth, recover a treasure, and race back to the start.
+        </p>
+        <a class="btn" href="#" aria-label="Play the maze game">Play</a>
+      </section>
+
+      <section id="exercises" class="section">
+        <h2>AI: some exercises</h2>
+        <p>
+          Hands‑on tasks to learn PyTorch, CNNs, GNNs, attention, and reinforcement learning. Build intuition by coding from scratch.
+        </p>
+        <a class="btn" href="#" aria-label="Open AI exercises">AI Exercises</a>
+      </section>
+
+      <section id="games" class="section">
+        <h2>AI projects: 2048, Chess, Minesweeper</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>2048</h3>
+            <p>Evolutionary search plans ahead by simulating future boards, scoring by monotonicity and merges.</p>
+            <a class="btn" href="#">Try it</a>
+          </div>
+          <div class="card">
+            <h3>Chess</h3>
+            <p>Minimax with material balance evaluation; search deeper to handle tactics and traps.</p>
+            <a class="btn" href="#">Play</a>
+          </div>
+          <div class="card">
+            <h3>Minesweeper</h3>
+            <p>Logic rules plus probability to select the safest cell when deduction is impossible.</p>
+            <a class="btn" href="#">Watch</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="poetry" class="section">
+        <h2>Poetry</h2>
+        <ul>
+          <li><a href="#">I always want eyes (Hebrew) — Dec 2019</a></li>
+          <li><a href="#">You, Israel (Hebrew) — May 2020</a></li>
+          <li><a href="#">Estate / Summer (Italian / English) — Jul 2022</a></li>
+          <li><a href="#">Albero / Tree (Italian / English) — May 2023</a></li>
+        </ul>
+      </section>
+
+      <section id="beliefs" class="section">
+        <h2>Beliefs</h2>
+        <p>I believe in the axioms by Federico Ardila:</p>
+        <ol>
+          <li>Mathematical talent is distributed equally across groups and boundaries.</li>
+          <li>Everyone can have joyful, meaningful, empowering mathematical experiences.</li>
+          <li>Mathematics is a powerful, malleable tool that communities can shape to serve their needs.</li>
+          <li>Every student deserves dignity and respect.</li>
+        </ol>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:mahsa@example.com">mahsa@example.com</a></p>
+      </section>
+
+      <p class="foot">© <span id="year"></span> Mahsa Raeisinezhad</p>
+    </main>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Billion seconds calculator
+    const $ = (id) => document.getElementById(id);
+    const billionOut = $('billionOut');
+    $('calcBtn').addEventListener('click', () => {
+      const d = $('birthdate').value; if (!d) { billionOut.textContent = 'Please select a birthdate.'; return; }
+      const t = $('birthtime').value || '00:00';
+      const dt = new Date(`${d}T${t}:00`);
+      if (isNaN(dt.getTime())) { billionOut.textContent = 'Invalid date/time.'; return; }
+      const target = new Date(dt.getTime() + 1_000_000_000 * 1000);
+      const fmt = target.toLocaleString(undefined, { dateStyle: 'full', timeStyle: 'long' });
+      const now = new Date();
+      const diffMs = target - now;
+      const ahead = diffMs >= 0;
+      const days = Math.abs(Math.floor(diffMs / (1000 * 60 * 60 * 24)));
+      billionOut.innerHTML = `<strong>${fmt}</strong><br>${ahead ? 'In' : ''} ${days} days ${ahead ? '' : 'ago'}`;
+    });
+
+    // Pólya urn simulation & histogram
+    let chart;
+    function simulatePolya(drops, trials) {
+      const counts = new Array(drops + 2).fill(0); // A can be 1..N+1
+      for (let tr = 0; tr < trials; tr++) {
+        let a = 1, b = 1;
+        for (let i = 0; i < drops; i++) {
+          const r = Math.random();
+          const pA = a / (a + b);
+          if (r < pA) { a++; } else { b++; }
+        }
+        counts[a]++;
+      }
+      const labels = Array.from({ length: drops + 1 }, (_, i) => i + 1);
+      const freq = labels.map(k => counts[k]);
+      return { labels, freq };
+    }
+
+    function renderHist(labels, freq) {
+      const ctx = document.getElementById('histChart');
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: 'Count of A after N drops', data: freq }] },
+        options: {
+          responsive: true,
+          scales: {
+            x: { grid: { color: 'rgba(120,120,120,0.15)' }, title: { display: true, text: 'A count' } },
+            y: { beginAtZero: true, grid: { color: 'rgba(120,120,120,0.15)' }, title: { display: true, text: 'Frequency' } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    $('runSim').addEventListener('click', () => {
+      const drops = Math.max(1, parseInt($('drops').value || '9', 10));
+      const trials = Math.max(100, parseInt($('trials').value || '1000', 10));
+      const { labels, freq } = simulatePolya(drops, trials);
+      renderHist(labels, freq);
+    });
+
+    // Initial chart
+    (function init() {
+      const { labels, freq } = simulatePolya(9, 1000);
+      renderHist(labels, freq);
+    })();
+  </script>
+</body>
+</html>
