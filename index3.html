@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahsa Raeisinezhad — Portfolio</title>
+  <meta name="description" content="Portfolio and resume of Mahsa Raeisinezhad: AI Research Scientist, publications, projects, and technical expertise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --bg-soft: #11151a;
+      --text: #e6e9ee;
+      --muted: #adb4c0;
+      --accent: rgb(180, 1, 255);   /* bratpink */
+      --accent-2: rgb(150, 2, 255); /* color1 */
+      --card: #0f1318;
+      --border: #1b222b;
+      --code: #0b1220;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f9fc;
+        --bg-soft:#f1f5f9;
+        --text:#0f172a;
+        --muted:#42536b;
+        --accent: rgb(180, 1, 255);
+        --accent-2: rgb(150, 2, 255);
+        --card:#ffffff;
+        --border:#e5e9f0;
+        --code:#f5f7fb;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 6rem; display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
+    @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .toc { position: static; } }
+
+    .toc { position: sticky; top: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
+    .toc h2 { margin: 0 0 .5rem; font-size: 1rem; font-weight: 700; }
+    .toc nav a { display: block; padding: .25rem 0; color: var(--muted); }
+    .toc nav a:hover { color: var(--accent); }
+
+    .section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; margin-bottom: 1rem; }
+    .section h1, .section h2, .section h3 { color: var(--accent-2); }
+    #about h1 { font-size: 2.2rem; color: var(--accent); }
+
+    .muted { color: var(--muted); }
+
+    .tagbar { display: flex; gap: .6rem; flex-wrap: wrap; margin: .75rem 0 0; }
+    .tag { font-size: .75rem; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); padding: .2rem .5rem; border-radius: 999px; }
+
+    .links { display: flex; gap: .75rem; flex-wrap: wrap; margin: .75rem 0 1rem; }
+    .btn {
+      padding: .55rem .85rem;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      filter: brightness(1.15);
+      text-decoration: none;
+    }
+
+    .foot { text-align: center; color: var(--muted); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar / TOC -->
+    <aside class="toc">
+      <h2>Table of contents</h2>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Work Experience</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications & Certifications</a>
+        <a href="#skills">Technical Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main>
+      <section id="about" class="section">
+        <h1>Mahsa Raeisinezhad</h1>
+        <p class="muted">Artificial Intelligence Research Scientist</p>
+        <div class="links">
+          <a class="btn" href="./r_ai.pdf" target="_blank" rel="noopener">CV</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=EsxxTS4AAAAJ&hl" target="_blank">Google Scholar</a>
+          <a class="btn" href="https://github.com/Mahsarnzh" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/mahsa-raeisinezhad-7160a1171" target="_blank">LinkedIn</a>
+        </div>
+        <p>
+          Highly skilled AI Research Scientist with 4+ years of experience in application design, development, testing, and deployment. 
+          Strong background in distributed computing, optimization, and AI-driven solutions, with multiple publications in leading journals.
+        </p>
+      </section>
+
+      <section id="experience" class="section">
+        <h2>Work Experience</h2>
+        <article>
+          <h3>Apsy — AI Research Scientist (May 2021 – Present)</h3>
+          <ul>
+            <li>Developed core product to automate app creation for 75 paying customers, reducing manual effort by 60%.</li>
+            <li>Optimized LLM training pipelines, cutting computational costs by 20%.</li>
+            <li>Contributed to scaling the startup from 5 to 100+ employees.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Lighthouse Regulatory Consulting Group — AI Research Scientist (Jan 2024 – Apr 2025)</h3>
+          <ul>
+            <li>Designed POMDP-based reinforcement learning algorithms for real-time decision-making.</li>
+            <li>Implemented fine-tuning with MoE and RAG pipelines, improving accuracy and comprehension.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Sloan Lubricating Systems — Tech Lead (Aug 2023 – Mar 2024)</h3>
+          <ul>
+            <li>Built deep learning pipelines for predictive maintenance, reducing downtime by 25%.</li>
+            <li>Led a cross-functional engineering team of five.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>University of Pittsburgh — Ph.D. Research Assistant (Aug 2021 – Aug 2024)</h3>
+          <ul>
+            <li>Developed explainable DRL-based control algorithms for nuclear plant operations, achieving 50% cost reduction.</li>
+            <li>Applied sensor fusion & Vision Transformers for robotics state estimation.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Rowan University — Graduate Research Assistant (Aug 2019 – Aug 2021)</h3>
+          <ul>
+            <li>Optimized soft robotic actuators with DRL and FEA validation.</li>
+            <li>Created computer vision pipelines for real-time object detection.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="education" class="section">
+        <h2>Education</h2>
+        <ul>
+          <li>M.S. Mechanical Engineering — University of Pittsburgh (2021–2023)</li>
+          <li>M.S. Computer Science — Rowan University (2019–2021)</li>
+          <li>B.S. Computer Science — Shiraz University (2013–2017)</li>
+        </ul>
+      </section>
+
+      <section id="publications" class="section">
+        <h2>Publications & Certifications</h2>
+        <ul>
+          <li><a href="https://www.tandfonline.com/doi/full/10.1080/00295450.2024.2377034" target="_blank">Explainable, Deep Reinforcement Learning–Based Decision Making for Operations and Maintenance. Nuclear Technology (2024)</a></li>
+          <li><a href="https://www.frontiersin.org/articles/10.3389/frobt.2021.639102/full" target="_blank">Design Optimization of a Pneumatic Soft Robotic Actuator. Frontiers in Robotics and AI (2021)</a></li>
+          <li><a href="https://ieeexplore.ieee.org/document/9158916" target="_blank">Intelligent Soft Robotic Pad for Pressure Injury Prevention. IEEE (2020)</a></li>
+          <li><a href="https://www.coursera.org/account/accomplishments/verify/0G215UB3FTSH" target="_blank">Certification: Artificial Intelligence on Microsoft Azure (2025)</a></li>
+        </ul>
+      </section>
+
+      <section id="skills" class="section">
+        <h2>Technical Skills</h2>
+        <div class="tagbar">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Hugging Face</span>
+          <span class="tag">RAG</span><span class="tag">GANs</span><span class="tag">YOLO / Faster R-CNN</span>
+          <span class="tag">Vision Transformers</span><span class="tag">Reinforcement Learning</span>
+          <span class="tag">LLM Optimization</span><span class="tag">MLOps</span><span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span><span class="tag">AWS / AzureML</span>
+          <span class="tag">NVIDIA GPUs (cuDNN, TensorRT)</span>
+          <span class="tag">FAISS / ChromaDB / DynamoDB</span>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:mahsaraeesinezhad@gmail.com">mahsaraeesinezhad@gmail.com</a></p>
+        <p>Phone: 856-803-4654</p>
+      </section>
+
+      <p class="foot">© <span id="year"></span> Mahsa Raeisinezhad</p>
+    </main>
+  </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

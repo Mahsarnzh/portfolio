@@ -1,199 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mahsa Raeisinezhad — Portfolio</title>
-  <meta name="description" content="Portfolio and resume of Mahsa Raeisinezhad: AI Research Scientist, publications, projects, and technical expertise." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Mahsa Raeisinezhad" />
+  <meta name="keywords" content="Mahsa Raeisinezhad, AI Research Scientist, Machine Learning, Deep Learning, Reinforcement Learning, LLMs" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Portfolio of Mahsa Raeisinezhad — AI Research Scientist. Experience, publications, skills, and contact." />
+
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+
+  <title>Mahsa Raeisinezhad</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <!-- Keep the repo's layout CSS, then override with our theme -->
+  <link rel="stylesheet" href="css/layouts/blog.css">
+
+  <!-- THEME OVERRIDES -->
   <style>
-    :root {
+    :root{
       --bg: #0b0d10;
-      --bg-soft: #11151a;
-      --text: #e6e9ee;
-      --muted: #adb4c0;
-      --accent: rgb(180, 1, 255);   /* bratpink */
-      --accent-2: rgb(150, 2, 255); /* color1 */
       --card: #0f1318;
-      --border: #1b222b;
-      --code: #0b1220;
+      --text: #e6e9ee;
+      --muted:#adb4c0;
+      --border:#1b222b;
+      --bratpink: rgb(180, 1, 255);  /* LaTeX bratpink */
+      --purple:   rgb(150, 2, 255);  /* LaTeX color1   */
+      --chip-bg: #11151a;
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f9fc;
-        --bg-soft:#f1f5f9;
-        --text:#0f172a;
-        --muted:#42536b;
-        --accent: rgb(180, 1, 255);
-        --accent-2: rgb(150, 2, 255);
-        --card:#ffffff;
-        --border:#e5e9f0;
-        --code:#f5f7fb;
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f7f9fc; --card:#ffffff; --text:#0f172a; --muted:#42536b; --border:#e5e9f0; --chip-bg:#f1f5f9;
       }
     }
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
+    html, body{ background: var(--bg); color: var(--text); }
+    .content, .post, .info-box{ background: var(--card); border:1px solid var(--border); border-radius:16px; }
+    .content{ padding: 0.75rem; }
+    .post{ padding: 1.25rem; }
+    .post-header{ display:flex; align-items:center; gap:.9rem; }
+    .post-title{ margin:0; color: var(--bratpink); font-size: 2rem; font-weight: 800; letter-spacing:.02em; }
+    .content-subhead{ color: var(--purple); border-bottom: 1px solid var(--border); padding-bottom:.25rem; }
+
+    /* Sidebar */
+    .sidebar{ background: var(--card); border-right:1px solid var(--border); }
+    .icon-color{ color: var(--purple); }
+    .sidebar a{ color: var(--muted); }
+    .sidebar a:hover{ color: var(--bratpink); }
+
+    /* Buttons in Mahsa colors */
+    .btn{
+      display:inline-flex; align-items:center; gap:.4rem;
+      background: var(--bratpink); color: #fff !important;
+      border: none; border-radius: 10px; padding: .55rem .85rem;
+      font-weight: 700; text-decoration:none; transition: filter .2s ease, transform .02s ease-in;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .btn:hover{ filter: brightness(1.15); text-decoration:none; }
+    .btn:active{ transform: translateY(1px); }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 6rem; display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
-    @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .toc { position: static; } }
-
-    .toc { position: sticky; top: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
-    .toc h2 { margin: 0 0 .5rem; font-size: 1rem; font-weight: 700; }
-    .toc nav a { display: block; padding: .25rem 0; color: var(--muted); }
-    .toc nav a:hover { color: var(--accent); }
-
-    .section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; margin-bottom: 1rem; }
-    .section h1, .section h2, .section h3 { color: var(--accent-2); }
-    #about h1 { font-size: 2.2rem; color: var(--accent); }
-
-    .muted { color: var(--muted); }
-
-    .tagbar { display: flex; gap: .6rem; flex-wrap: wrap; margin: .75rem 0 0; }
-    .tag { font-size: .75rem; border: 1px solid var(--border); background: var(--bg-soft); color: var(--muted); padding: .2rem .5rem; border-radius: 999px; }
-
-    .links { display: flex; gap: .75rem; flex-wrap: wrap; margin: .75rem 0 1rem; }
-    .btn {
-      padding: .55rem .85rem;
-      border-radius: 10px;
-      border: none;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
+    /* Tag chips for skills */
+    .tagbar{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top: .5rem; }
+    .tag{
+      font-size: .8rem; color: var(--muted); background: var(--chip-bg);
+      border:1px solid var(--border); padding:.25rem .55rem; border-radius:999px;
     }
-    .btn:hover {
-      filter: brightness(1.15);
-      text-decoration: none;
-    }
+    .tag.highlight{ color: #fff; border-color: rgba(180,1,255,.35); background: rgba(180,1,255,.15); }
 
-    .foot { text-align: center; color: var(--muted); margin-top: 2rem; }
+    /* Links */
+    a{ color: var(--bratpink); }
+    a:hover{ text-decoration: underline; }
+
+    /* Misc tweaks */
+    blockquote{ border-left: 3px solid var(--purple); color: var(--muted); }
+    .info-box{ padding: 1rem; }
+    .post-avatar{ border-radius: 999px; border:2px solid var(--purple); }
+    .footnote{ color: var(--muted); text-align:center; margin: 1rem 0; }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <!-- Sidebar / TOC -->
-    <aside class="toc">
-      <h2>Table of contents</h2>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Work Experience</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications & Certifications</a>
-        <a href="#skills">Technical Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </aside>
 
-    <!-- Main -->
-    <main>
-      <section id="about" class="section">
-        <h1>Mahsa Raeisinezhad</h1>
-        <p class="muted">Artificial Intelligence Research Scientist</p>
-        <div class="links">
-          <a class="btn" href="./r_ai.pdf" target="_blank" rel="noopener">CV</a>
-          <a class="btn" href="https://scholar.google.com/citations?user=EsxxTS4AAAAJ&hl" target="_blank">Google Scholar</a>
-          <a class="btn" href="https://github.com/Mahsarnzh" target="_blank">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/mahsa-raeisinezhad-7160a1171" target="_blank">LinkedIn</a>
-        </div>
-        <p>
-          Highly skilled AI Research Scientist with 4+ years of experience in application design, development, testing, and deployment. 
-          Strong background in distributed computing, optimization, and AI-driven solutions, with multiple publications in leading journals.
-        </p>
-      </section>
-
-      <section id="experience" class="section">
-        <h2>Work Experience</h2>
-        <article>
-          <h3>Apsy — AI Research Scientist (May 2021 – Present)</h3>
-          <ul>
-            <li>Developed core product to automate app creation for 75 paying customers, reducing manual effort by 60%.</li>
-            <li>Optimized LLM training pipelines, cutting computational costs by 20%.</li>
-            <li>Contributed to scaling the startup from 5 to 100+ employees.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Lighthouse Regulatory Consulting Group — AI Research Scientist (Jan 2024 – Apr 2025)</h3>
-          <ul>
-            <li>Designed POMDP-based reinforcement learning algorithms for real-time decision-making.</li>
-            <li>Implemented fine-tuning with MoE and RAG pipelines, improving accuracy and comprehension.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Sloan Lubricating Systems — Tech Lead (Aug 2023 – Mar 2024)</h3>
-          <ul>
-            <li>Built deep learning pipelines for predictive maintenance, reducing downtime by 25%.</li>
-            <li>Led a cross-functional engineering team of five.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>University of Pittsburgh — Ph.D. Research Assistant (Aug 2021 – Aug 2024)</h3>
-          <ul>
-            <li>Developed explainable DRL-based control algorithms for nuclear plant operations, achieving 50% cost reduction.</li>
-            <li>Applied sensor fusion & Vision Transformers for robotics state estimation.</li>
-          </ul>
-        </article>
-        <article>
-          <h3>Rowan University — Graduate Research Assistant (Aug 2019 – Aug 2021)</h3>
-          <ul>
-            <li>Optimized soft robotic actuators with DRL and FEA validation.</li>
-            <li>Created computer vision pipelines for real-time object detection.</li>
-          </ul>
-        </article>
-      </section>
-
-      <section id="education" class="section">
-        <h2>Education</h2>
-        <ul>
-          <li>M.S. Mechanical Engineering — University of Pittsburgh (2021–2023)</li>
-          <li>M.S. Computer Science — Rowan University (2019–2021)</li>
-          <li>B.S. Computer Science — Shiraz University (2013–2017)</li>
-        </ul>
-      </section>
-
-      <section id="publications" class="section">
-        <h2>Publications & Certifications</h2>
-        <ul>
-          <li><a href="https://www.tandfonline.com/doi/full/10.1080/00295450.2024.2377034" target="_blank">Explainable, Deep Reinforcement Learning–Based Decision Making for Operations and Maintenance. Nuclear Technology (2024)</a></li>
-          <li><a href="https://www.frontiersin.org/articles/10.3389/frobt.2021.639102/full" target="_blank">Design Optimization of a Pneumatic Soft Robotic Actuator. Frontiers in Robotics and AI (2021)</a></li>
-          <li><a href="https://ieeexplore.ieee.org/document/9158916" target="_blank">Intelligent Soft Robotic Pad for Pressure Injury Prevention. IEEE (2020)</a></li>
-          <li><a href="https://www.coursera.org/account/accomplishments/verify/0G215UB3FTSH" target="_blank">Certification: Artificial Intelligence on Microsoft Azure (2025)</a></li>
-        </ul>
-      </section>
-
-      <section id="skills" class="section">
-        <h2>Technical Skills</h2>
-        <div class="tagbar">
-          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Hugging Face</span>
-          <span class="tag">RAG</span><span class="tag">GANs</span><span class="tag">YOLO / Faster R-CNN</span>
-          <span class="tag">Vision Transformers</span><span class="tag">Reinforcement Learning</span>
-          <span class="tag">LLM Optimization</span><span class="tag">MLOps</span><span class="tag">Docker</span>
-          <span class="tag">Kubernetes</span><span class="tag">AWS / AzureML</span>
-          <span class="tag">NVIDIA GPUs (cuDNN, TensorRT)</span>
-          <span class="tag">FAISS / ChromaDB / DynamoDB</span>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:mahsaraeesinezhad@gmail.com">mahsaraeesinezhad@gmail.com</a></p>
-        <p>Phone: 856-803-4654</p>
-      </section>
-
-      <p class="foot">© <span id="year"></span> Mahsa Raeisinezhad</p>
-    </main>
+  <div id="mySidebar" class="sidebar">
+    <a onclick="closeNav()" href="#aboutme"><i class="fas fa-house icon-color"></i> About</a>
+    <a onclick="closeNav()" href="#experience"><i class="fas fa-briefcase icon-color"></i> Work Experience</a>
+    <a onclick="closeNav()" href="#education"><i class="fas fa-graduation-cap icon-color"></i> Education</a>
+    <a onclick="closeNav()" href="#publications"><i class="fas fa-book icon-color"></i> Publications</a>
+    <a onclick="closeNav()" href="#skills"><i class="fas fa-microchip icon-color"></i> Technical Skills</a>
+    <a onclick="closeNav()" href="#contact"><i class="fas fa-envelope icon-color"></i> Contact</a>
   </div>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <div id="main">
+    <button class="openbtn" onclick="openNav()"><i class="fas fa-bars" style="font-size: 0.8em;"></i> Table of contents</button>
+  </div>
+
+  <script>
+    function openNav(){ document.getElementById("mySidebar").style.width = "250px"; document.getElementById("main").style.display = "none"; }
+    function closeNav(){
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.display = "initial";
+      setTimeout(function(){ history.replaceState({}, document.title, window.location.href.split('#')[0]); }, 500);
+    }
+    document.onclick = function(e){
+      if (e.target.id !== 'mySidebar'){
+        if (e.target.offsetParent && e.target.offsetParent.id !== 'mySidebar'){ closeNav(); }
+      }
+    }
+  </script>
+
+  <div id="layout" class="pure-g">
+    <div class="content pure-u-1">
+      <div>
+
+        <!-- ABOUT -->
+        <div class="posts" id="aboutme">
+          <section class="post">
+            <header class="post-header">
+              <img class="post-avatar" alt="Mahsa avatar" height="90" width="90" src="avatar.jpg">
+              <h2 class="post-title">Mahsa Raeisinezhad</h2>
+            </header>
+            <div class="post-description">
+              <div class="info-box">
+                <blockquote>
+                  <p><q><i>I'm still learning.</i></q> — Michelangelo</p>
+                </blockquote>
+                <p>
+                  Email: <a href="mailto:mahsaraeesinezhad@gmail.com">mahsaraeesinezhad@gmail.com</a>
+                </p>
+                <p>
+                  <a class="btn" href="./r_ai.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> CV</a>
+                  <a class="btn" href="https://scholar.google.com/citations?user=EsxxTS4AAAAJ&hl" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+                  <a class="btn" href="https://github.com/Mahsarnzh" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a class="btn" href="https://www.linkedin.com/in/mahsa-raeisinezhad-7160a1171" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                </p>
+                <p>
+                  AI Research Scientist with 4+ years of experience in design, development, testing, and deployment of ML systems. Strong background in distributed computing and optimization, with publications in leading journals.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="posts" id="experience">
+          <h1 class="content-subhead">Work Experience</h1>
+          <section class="post">
+            <div class="post-description">
+              <h3 style="color:var(--purple); margin-top:0;">Apsy — AI Research Scientist <span style="color:var(--muted); font-weight:400;">(May 2021 – Present)</span></h3>
+              <ul>
+                <li>Developed core product to automate app creation for 75 paying customers, reducing manual effort by 60%.</li>
+                <li>Optimized LLM training pipelines, cutting computational costs by 20%.</li>
+                <li>Contributed to scaling the startup from 5 to 100+ employees.</li>
+              </ul>
+
+              <h3 style="color:var(--purple);">Lighthouse Regulatory Consulting Group — AI Research Scientist <span style="color:var(--muted); font-weight:400;">(Jan 2024 – Apr 2025)</span></h3>
+              <ul>
+                <li>POMDP-based reinforcement learning for real-time decision-making with sensor streams.</li>
+                <li>Fine-tuning with MoE and RAG pipelines, improving accuracy and comprehension.</li>
+              </ul>
+
+              <h3 style="color:var(--purple);">Sloan Lubricating Systems — Tech Lead <span style="color:var(--muted); font-weight:400;">(Aug 2023 – Mar 2024)</span></h3>
+              <ul>
+                <li>Predictive maintenance pipelines, reducing downtime by 25%.</li>
+                <li>Led a five-person cross-functional team.</li>
+              </ul>
+
+              <h3 style="color:var(--purple);">University of Pittsburgh — Ph.D. Research Assistant <span style="color:var(--muted); font-weight:400;">(Aug 2021 – Aug 2024)</span></h3>
+              <ul>
+                <li>Explainable DRL control for nuclear plant operations, achieving 50% cost reduction.</li>
+                <li>Sensor fusion and ViT for robotics state estimation.</li>
+              </ul>
+
+              <h3 style="color:var(--purple);">Rowan University — Graduate Research Assistant <span style="color:var(--muted); font-weight:400;">(Aug 2019 – Aug 2021)</span></h3>
+              <ul>
+                <li>DRL + FEA optimization of soft robotic actuators.</li>
+                <li>Real-time computer vision pipeline for detection.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="posts" id="education">
+          <h1 class="content-subhead">Education</h1>
+          <section class="post">
+            <div class="post-description">
+              <ul>
+                <li><strong>M.S., Mechanical Engineering</strong> — University of Pittsburgh (2021–2023)</li>
+                <li><strong>M.S., Computer Science</strong> — Rowan University (2019–2021)</li>
+                <li><strong>B.S., Computer Science</strong> — Shiraz University (2013–2017)</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- PUBLICATIONS -->
+        <div class="posts" id="publications">
+          <h1 class="content-subhead">Publications & Certifications</h1>
+          <section class="post">
+            <div class="post-description">
+              <ul>
+                <li><a href="https://www.tandfonline.com/doi/full/10.1080/00295450.2024.2377034" target="_blank" rel="noopener">Explainable, Deep Reinforcement Learning–Based Decision Making for Operations and Maintenance. Nuclear Technology (2024)</a></li>
+                <li><a href="https://www.frontiersin.org/articles/10.3389/frobt.2021.639102/full" target="_blank" rel="noopener">Design Optimization of a Pneumatic Soft Robotic Actuator. Frontiers in Robotics and AI (2021)</a></li>
+                <li><a href="https://ieeexplore.ieee.org/document/9158916" target="_blank" rel="noopener">Intelligent Soft Robotic Pad for Pressure Injury Prevention. IEEE (2020)</a></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/verify/0G215UB3FTSH" target="_blank" rel="noopener">Certification: Artificial Intelligence on Microsoft Azure (2025)</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="posts" id="skills">
+          <h1 class="content-subhead">Technical Skills</h1>
+          <section class="post">
+            <div class="post-description">
+              <div class="tagbar">
+                <span class="tag highlight">PyTorch</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Hugging Face</span>
+                <span class="tag">RAG</span>
+                <span class="tag">GANs</span>
+                <span class="tag">YOLO</span>
+                <span class="tag">Faster R-CNN</span>
+                <span class="tag">Vision Transformers</span>
+                <span class="tag">Reinforcement Learning</span>
+                <span class="tag">LLM Optimization</span>
+                <span class="tag">MLOps</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Kubernetes</span>
+                <span class="tag">AWS</span>
+                <span class="tag">AzureML</span>
+                <span class="tag">TensorRT</span>
+                <span class="tag">FAISS</span>
+                <span class="tag">ChromaDB</span>
+                <span class="tag">DynamoDB</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="posts" id="contact">
+          <h1 class="content-subhead">Contact</h1>
+          <section class="post">
+            <div class="post-description">
+              <p>Email: <a href="mailto:mahsaraeesinezhad@gmail.com">mahsaraeesinezhad@gmail.com</a></p>
+              <p>LinkedIn: <a href="https://www.linkedin.com/in/mahsa-raeisinezhad-7160a1171" target="_blank" rel="noopener">mahsa-raeisinezhad-7160a1171</a></p>
+              <p>GitHub: <a href="https://github.com/Mahsarnzh" target="_blank" rel="noopener">Mahsarnzh</a></p>
+            </div>
+          </section>
+          <p class="footnote">© <span id="year"></span> Mahsa Raeisinezhad</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
