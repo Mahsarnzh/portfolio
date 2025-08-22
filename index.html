@@ -79,7 +79,19 @@
 	  border-color: var(--purple);
 	  box-shadow: 0 0 14px var(--purple);
 	}
-  
+	.openbtn {
+	outline: none !important;   /* removes default focus outline */
+	border: none !important;    /* removes the border you added manually */
+	box-shadow: none !important; /* kills the glow Safari/Chrome add */
+	}
+	.openbtn:focus,
+	.openbtn:active {
+	outline: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	}
+
+	
 	/* Cards / boxes */
 	.info-box, .post, .post-description {
 	  background: var(--bg);
